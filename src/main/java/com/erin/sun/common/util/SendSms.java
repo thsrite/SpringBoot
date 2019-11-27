@@ -19,7 +19,7 @@ public class SendSms {
      * @return void
      **/
     public static void SendSms(String mobile, String code) {
-        DefaultProfile profile = DefaultProfile.getProfile("default", "LTAI6ExP8XsL9h1u", "WI6AnBIeo6lfLoAPFBJ4XQK8ei3aqS");
+        DefaultProfile profile = DefaultProfile.getProfile("default", "accessKeyId", "secret");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
@@ -29,7 +29,7 @@ public class SendSms {
         request.setAction("SendSms");
         request.putQueryParameter("PhoneNumbers", mobile);
         request.putQueryParameter("TemplateCode", "SMS_169990503");
-        request.putQueryParameter("SignName", "青岛国际院士港");
+        request.putQueryParameter("SignName", "SignName");
         request.putQueryParameter("TemplateParam", code);
         try {
             CommonResponse response = client.getCommonResponse(request);
