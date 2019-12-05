@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://192.168.8.10:27017/energy
+      uri: mongodb://192.168.8.10:27017/data
   servlet:
     multipart:
       max-file-size: 10240MB
@@ -26,9 +26,9 @@ spring:
         # 数据源-1，名称为 primary
         primary:
           username: root
-          password: Mingbyte@123
+          password: 123456
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://mysql.mingbyte.com:3306/ysg_acad?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+          url: jdbc:mysql://localhost:3306/data?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
         # 数据源-2，名称为 test
   #        test:
   #          username: root
@@ -64,7 +64,7 @@ spring:
     host: 192.168.8.20
     port: 5672
     username: admin
-    password: mingbyte
+    password: admin
     publisher-confirms: true #支持发布确认
     publisher-returns: true  #支持发布返回
     listener:
