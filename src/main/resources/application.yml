@@ -1,5 +1,5 @@
 server:
-  port: 9210
+  port: 9211
 
 spring:
   data:
@@ -28,7 +28,7 @@ spring:
           username: root
           password: Mingbyte@123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://mysql.mingbyte.com:3306/energy?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+          url: jdbc:mysql://mysql.mingbyte.com:3306/ysg_acad?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
         # 数据源-2，名称为 test
   #        test:
   #          username: root
@@ -60,10 +60,24 @@ spring:
   thymeleaf:
     prefix: classpath:/view/
 
-#mybatis plus 设置
+  rabbitmq:
+    host: 192.168.8.20
+    port: 5672
+    username: admin
+    password: mingbyte
+    publisher-confirms: true #支持发布确认
+    publisher-returns: true  #支持发布返回
+    listener:
+      simple:
+        acknowledge-mode: manual #采用手动应答
+        concurrency: 1 #指定最小的消费者数量
+        max-concurrency: 1 #指定最大的消费者数量
+        retry:
+          enabled: true #是否支持重试#mybatis plus 设置
+
 mybatis-plus:
-  type-aliases-package: cc.mrbird.febs.system.domain,cc.mrbird.febs.job.domain
-  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.erin.sun.system.domain,com.erin.sun.common.domain
+  mapper-locations: classpath:mapper/*.xml
   configuration:
     jdbc-type-for-null: null
   global-config:
@@ -75,7 +89,6 @@ management:
     web:
       exposure:
         include: ['httptrace', 'metrics']
-
 
 febs:
   # 是否异步记录用户操作日志
